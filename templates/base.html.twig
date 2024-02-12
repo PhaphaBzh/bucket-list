@@ -1,17 +1,40 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
-        {% block stylesheets %}
-        {% endblock %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}Bienvenue chez les Bucket Lists{% endblock %}</title>
 
-        {% block javascripts %}
-{% block importmap %}{{ importmap('app') }}{% endblock %}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=BioRhyme:wght@300;500&display=swap" rel="stylesheet">
+
+    <link rel="icon" href="{{ asset('img/favicon.png') }}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1 class="header-logo">
+                <a href="{{ path('main_home') }}" title="Home">
+                <img src="{{ asset('img/logo.svg') }}" alt="logo bucket">Bucket-List</a>
+            </h1>
+            {% include('inc/nav.html.twig') %}
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            {% block body %}{% endblock %}
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">&copy;Bucket-List {{ "now"|date("Y") }}</div>
+    </footer>
+
+</body>
 </html>
