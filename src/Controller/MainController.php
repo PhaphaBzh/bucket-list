@@ -16,6 +16,11 @@ class MainController extends AbstractController
     #[Route('/aboutUs', name: 'main_infos', methods: ['GET', 'POST'])]
     public function infos()
     {
-        return$this->render('main/infos.html.twig');
+        $rawData = file_get_contents('../data/team.json');
+
+        $teamMembers = json_decode($rawData,true);
+        return$this->render('main/infos.html.twig', [
+            'teamMembers' => $teamMembers
+        ]);
     }
 }

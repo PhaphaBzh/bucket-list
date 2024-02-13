@@ -61,3 +61,28 @@ footer {
     text-align: center;
 }
 
+.team-members article {
+    display: flex;
+    flex-direction: column;
+    margin: 30px 0;
+}
+.team-members article img {
+    width: 210px;
+    border-radius: 50%;
+    margin: auto;
+}
+@media screen and (min-width: 680px) {
+    .team-members article {
+        flex-direction: row;
+    }
+    .team-members article:nth-child(odd) {
+        flex-direction: row-reverse;
+    }
+    .team-members article img {
+        margin-right: 20px;
+    }
+    .team-members article:nth-child(odd) img {
+        margin-right: 0;
+        margin-left: 20px;
+    }
+}

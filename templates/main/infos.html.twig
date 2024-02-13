@@ -5,6 +5,21 @@
 
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos facilis fugit neque quia? Aliquam architecto assumenda autem consequuntur corporis dolore dolorum ducimus eligendi esse et eveniet fuga illo illum inventore ipsa iusto laudantium modi, mollitia nam natus nemo nobis, possimus ratione repellat reprehenderit sapiente tempore vel veniam veritatis vero voluptates?</p>
 
+    <section class="team-members">
+        {% for member in teamMembers %}
+            <article>
+                <img src="{{ member.picture }}" alt="{{ member.lastname }}">
+                <div>
+                    <h3>
+                        {{ member.firstname }} {{ member.lastname }}
+                    </h3>
+                    <p>Creator of {{ member.creatorOf }}</p>
+                    <p>Date of birth : {{ member.dateOfBirth|date("d-m-Y") }}</p>
+                    <p>{{ member.description }}</p>
+                </div>
+            </article>
+        {% endfor %}
+    </section>
 {% endblock %}
 
 {% block title %}
