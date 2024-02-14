@@ -1,6 +1,13 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    <section>
+        {% for wish in wishes %}
+            <article>
+                <a href="{{ path('wish_details', {'id': wish.id}) }}" title="View wish's details">{{ wish.title}}</a>
+            </article>
+        {% endfor %}
+    </section>
 
 {% endblock %}
 
