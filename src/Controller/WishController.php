@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Wish;
+use App\Form\WishType;
 use App\Repository\WishRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Mapping as ORM;
@@ -39,12 +40,28 @@ class WishController extends AbstractController
         ]);
     }
 
-    /*#[Route('/create', name: 'create')]
-    public function create(Request $request): Response
+    #[Route('/create', name: 'create')]
+    public function create(Request $request, EntityManagerInterface $entityManager): Response
     {
-        dump($request);
-        return $this->render('wish/create.html.twig');
-    }*/
+        $wish = new Wish();
+        $wish->setDateCreated(new \DateTime());
+
+        $wishForm = $this->createForm(WishType::class, $wish);
+
+        $wishForm->handleRequest($request);
+
+        if($wishForm->isSubmitted() && $wishForm->isValid()){
+            $entityManager->persist($wish);
+            $entityManager->flush();
+
+            $this->addFlash('success', 'Wish added successfully - Good job !');
+            return $this->redirectToRoute('wish_details', ['id'=>$wish->getId()]);
+        }
+
+        return $this->render('wish/create.html.twig', [
+            'wishForm'=>$wishForm->createView()
+        ]);
+    }
 
     /*#[Route('/demo', name: 'em-demo')]
     public function demo(EntityManagerInterface $entityManager):Response

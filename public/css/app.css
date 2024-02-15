@@ -52,6 +52,11 @@ main {
     flex: 1;
     padding: 1rem 0;
 }
+
+main a {
+    text-decoration: none;
+    color: #283618;
+}
 footer, header {
     background-color: #ADA996;
 }
@@ -71,6 +76,32 @@ footer {
     border-radius: 50%;
     margin: auto;
 }
+
+.alert {
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 1rem;
+    margin: 1rem;
+    border-radius: 5px;
+    text-align: center;
+    background-color: #283618;
+}
+
+
+label{
+    display: block;
+}
+
+button {
+    padding: 0.5rem 0.7rem;
+    margin-top: 1rem;
+    background-color: #ADA996;
+    border-radius: 5px;
+    border: #ADA996;
+    font-family: inherit;
+}
+
+
 @media screen and (min-width: 680px) {
     .team-members article {
         flex-direction: row;
