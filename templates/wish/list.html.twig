@@ -2,9 +2,11 @@
 
 {% block body %}
     <section>
+        <h3>All your wishes (some might come true...)</h3>
         {% for wish in wishes %}
             <article>
-                <a href="{{ path('wish_details', {'id': wish.id}) }}" title="View wish's details">{{ wish.title}}</a>
+                <a href="{{ path('wish_details', {'id': wish.id}) }}"
+                   title="View wish's details">{{ wish.title}} | {{ wish.category.name }}</a>
             </article>
         {% endfor %}
     </section>
