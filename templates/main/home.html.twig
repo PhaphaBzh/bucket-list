@@ -3,6 +3,9 @@
 {% block title %}{{parent()}} | Bucket-List{% endblock %}
 
 {% block body %}
+    {% if app.user %}
+        <h2>Welcome dear {{ app.user.pseudo }}</h2>
+    {% endif %}
     <h2>Listez tout ce qui vous fait envie !</h2>
 {% endblock %}
 

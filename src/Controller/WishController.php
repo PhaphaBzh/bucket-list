@@ -48,6 +48,9 @@ class WishController extends AbstractController
 
         $wishForm = $this->createForm(WishType::class, $wish);
 
+        $currentUserUsername = $this->getUser()->getUserIdentifier();
+        $wish->setAuthor($currentUserUsername);
+
         $wishForm->handleRequest($request);
 
         if($wishForm->isSubmitted() && $wishForm->isValid()){

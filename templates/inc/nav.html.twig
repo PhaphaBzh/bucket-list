@@ -1,6 +1,15 @@
 <nav class="header-nav">
         <a href="{{ path('main_home') }}" title="Home">Home</a>
         <a href="{{ path('wish_list') }}" title="All wishes">All wishes</a>
-        <a href="{{ path('wish_create') }}" title="Make a wishes">Make a wish</a>
+
+        {% if app.user %}
+                <a href="{{ path('wish_create') }}" title="Make a wishes">Make a wish</a>
+                <a href="{{ path('app_logout') }}" title="Logout">Logout</a>
+
+        {% else %}
+                <a href="{{ path('app_login') }}" title="Login">Login</a>
+                <a href="{{ path('app_register') }}" title="Create an account">Register</a>
+        {% endif %}
+
         <a href="{{ path('main_infos') }}" title="Infos">About us</a>
 </nav>
